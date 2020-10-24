@@ -27,25 +27,13 @@ public class UserStoreConfigBaseListener implements UserStoreConfigListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPathlines(UserStoreConfigParser.PathlinesContext ctx) { }
+	@Override public void enterItems(UserStoreConfigParser.ItemsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPathlines(UserStoreConfigParser.PathlinesContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterMore(UserStoreConfigParser.MoreContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitMore(UserStoreConfigParser.MoreContext ctx) { }
+	@Override public void exitItems(UserStoreConfigParser.ItemsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -123,13 +111,73 @@ public class UserStoreConfigBaseListener implements UserStoreConfigListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterString(UserStoreConfigParser.StringContext ctx) { }
+	@Override public void enterObject(UserStoreConfigParser.ObjectContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitString(UserStoreConfigParser.StringContext ctx) { }
+	@Override public void exitObject(UserStoreConfigParser.ObjectContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterObjectproperties(UserStoreConfigParser.ObjectpropertiesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitObjectproperties(UserStoreConfigParser.ObjectpropertiesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterObjname(UserStoreConfigParser.ObjnameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitObjname(UserStoreConfigParser.ObjnameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterName(UserStoreConfigParser.NameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitName(UserStoreConfigParser.NameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterType(UserStoreConfigParser.TypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitType(UserStoreConfigParser.TypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterValidator(UserStoreConfigParser.ValidatorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitValidator(UserStoreConfigParser.ValidatorContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

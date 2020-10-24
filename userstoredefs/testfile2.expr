@@ -1,0 +1,17 @@
+/profile/<id>
+/profile/<id>/persona/<id>/optouts
+
+def optouts
+    marketing
+    pushnotification
+enddef
+
+def setting
+    audio audiosetting
+    brightness int brightnessvalidator
+enddef
+
+def audiosetting
+    volume int
+    outputsource string opsrcvalidator
+enddef

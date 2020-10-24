@@ -17,25 +17,15 @@ public interface UserStoreConfigListener extends ParseTreeListener {
 	 */
 	void exitUserstoredesc(UserStoreConfigParser.UserstoredescContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link UserStoreConfigParser#pathlines}.
+	 * Enter a parse tree produced by {@link UserStoreConfigParser#items}.
 	 * @param ctx the parse tree
 	 */
-	void enterPathlines(UserStoreConfigParser.PathlinesContext ctx);
+	void enterItems(UserStoreConfigParser.ItemsContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link UserStoreConfigParser#pathlines}.
+	 * Exit a parse tree produced by {@link UserStoreConfigParser#items}.
 	 * @param ctx the parse tree
 	 */
-	void exitPathlines(UserStoreConfigParser.PathlinesContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link UserStoreConfigParser#more}.
-	 * @param ctx the parse tree
-	 */
-	void enterMore(UserStoreConfigParser.MoreContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link UserStoreConfigParser#more}.
-	 * @param ctx the parse tree
-	 */
-	void exitMore(UserStoreConfigParser.MoreContext ctx);
+	void exitItems(UserStoreConfigParser.ItemsContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link UserStoreConfigParser#pathline}.
 	 * @param ctx the parse tree
@@ -101,13 +91,63 @@ public interface UserStoreConfigListener extends ParseTreeListener {
 	 */
 	void exitLabel(UserStoreConfigParser.LabelContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link UserStoreConfigParser#string}.
+	 * Enter a parse tree produced by {@link UserStoreConfigParser#object}.
 	 * @param ctx the parse tree
 	 */
-	void enterString(UserStoreConfigParser.StringContext ctx);
+	void enterObject(UserStoreConfigParser.ObjectContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link UserStoreConfigParser#string}.
+	 * Exit a parse tree produced by {@link UserStoreConfigParser#object}.
 	 * @param ctx the parse tree
 	 */
-	void exitString(UserStoreConfigParser.StringContext ctx);
+	void exitObject(UserStoreConfigParser.ObjectContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link UserStoreConfigParser#objectproperties}.
+	 * @param ctx the parse tree
+	 */
+	void enterObjectproperties(UserStoreConfigParser.ObjectpropertiesContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link UserStoreConfigParser#objectproperties}.
+	 * @param ctx the parse tree
+	 */
+	void exitObjectproperties(UserStoreConfigParser.ObjectpropertiesContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link UserStoreConfigParser#objname}.
+	 * @param ctx the parse tree
+	 */
+	void enterObjname(UserStoreConfigParser.ObjnameContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link UserStoreConfigParser#objname}.
+	 * @param ctx the parse tree
+	 */
+	void exitObjname(UserStoreConfigParser.ObjnameContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link UserStoreConfigParser#name}.
+	 * @param ctx the parse tree
+	 */
+	void enterName(UserStoreConfigParser.NameContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link UserStoreConfigParser#name}.
+	 * @param ctx the parse tree
+	 */
+	void exitName(UserStoreConfigParser.NameContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link UserStoreConfigParser#type}.
+	 * @param ctx the parse tree
+	 */
+	void enterType(UserStoreConfigParser.TypeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link UserStoreConfigParser#type}.
+	 * @param ctx the parse tree
+	 */
+	void exitType(UserStoreConfigParser.TypeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link UserStoreConfigParser#validator}.
+	 * @param ctx the parse tree
+	 */
+	void enterValidator(UserStoreConfigParser.ValidatorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link UserStoreConfigParser#validator}.
+	 * @param ctx the parse tree
+	 */
+	void exitValidator(UserStoreConfigParser.ValidatorContext ctx);
 }

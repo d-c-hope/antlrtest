@@ -1,66 +1,23 @@
 grammar UserStoreConfig;
 
-// /profile/<id>
-// /profile/<id>/persona
-// /profile/<id>/persona/<id>
-// /profile/id/persona/<id>/optouts
+import Paths, Objects;
+//import Objects;
 
-
-userstoredesc: pathlines EOF;
-
-pathlines
-   : pathline more
+userstoredesc
+   : items EOF
    ;
 
-more: pathlines
-    |
-    ;
-
-pathline
-   : path WS? NEWLINE
+items
+   : pathline items
+   | object items
+   | NEWLINE items
+   |
    ;
-
-path
-   : pathsegments
-   ;
-
-pathsegments
-   : '/' label '/' labelid pathsegments? #LABELIDPAIR
-   | '/' label                   #SINGLELABEL
-   ;
-
-labelid
-   :'<id>'
-   ;
-
-label: STRING
-   ;
-
-string: STRING
-   ;
-
-
-DIGITS
-   : [0-9] +
-   ;
-
-STRING
-   : [a-zA-Z~0-9] [a-zA-Z0-9.+-]*
-   ;
-
-WS: [ \t]+ -> skip;
-
-NEWLINE: [\r\n] +;
-
-
-//uri
-//   : ('/' path?)? WS? NEWLINE
-//   ;
-//path
-//   : string ('/' string)* '/'?
+//
+//item
+//   : pathline
+//   | object
 //   ;
 
-//path
-//   : '/' label ('/' string)*
-//   | label
-//   ;
+
+

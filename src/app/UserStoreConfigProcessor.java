@@ -2,67 +2,20 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-class Path {
-    public Path() {
-        this.idPairs = new LinkedList<>();
-    }
-
-    static class LabelIDPair {
-        String name;
-        String idName;
-
-        public LabelIDPair(String name, String idName) {
-            this.name = name;
-            this.idName = idName;
-        }
-
-        @Override
-        public String toString() {
-            return "LabelIDPair{" +
-                    "name='" + name + '\'' +
-                    ", idName='" + idName + '\'' +
-                    '}';
-        }
-    }
-
-    static class DocType {
-        String name;
-
-        public DocType(String name) {
-            this.name = name;
-        }
-
-        @Override
-        public String toString() {
-            return "DocType{" +
-                    "name='" + name + '\'' +
-                    '}';
-        }
-    }
-
-    List<LabelIDPair> idPairs;
-    DocType doctype;
-
-    @Override
-    public String toString() {
-        return "Path{" +
-                "idPairs=" + idPairs +
-                ", doctype=" + doctype +
-                '}';
-    }
-}
-
 public class UserStoreConfigProcessor extends UserStoreConfigBaseListener {
 
     List<String> uris;
     UserStoreConfigParser parser;
     Path currentPath;
+    ConfigObject currentObject;
     List<Path> paths;
+    List<ConfigObject> configObjects;
 
     public UserStoreConfigProcessor(UserStoreConfigParser parser) {
         this.parser = parser;
         uris = new LinkedList<>();
         paths = new LinkedList<>();
+        configObjects = new LinkedList<>();
         currentPath = null;
     }
 
@@ -72,7 +25,6 @@ public class UserStoreConfigProcessor extends UserStoreConfigBaseListener {
 
     @Override
     public void enterUserstoredesc(UserStoreConfigParser.UserstoredescContext ctx) {
-//        TokenStream tokens = parser.getTokenStream();
     }
 
     @Override
@@ -80,12 +32,11 @@ public class UserStoreConfigProcessor extends UserStoreConfigBaseListener {
         System.out.println("Exiting");
         System.out.println(uris);
         System.out.println(paths);
+        System.out.println(configObjects);
     }
 
     @Override
     public void enterPath(UserStoreConfigParser.PathContext ctx) {
-//        System.out.println(ctx.getText());
-//        TerminalNode node = ctx.path().string();
         System.out.println("In enter path");
         currentPath = new Path();
         uris.add(ctx.getText());
@@ -122,7 +73,34 @@ public class UserStoreConfigProcessor extends UserStoreConfigBaseListener {
         super.exitSINGLELABEL(ctx);
     }
 
-//    @Override
+    @Override
+    public void enterObject(UserStoreConfigParser.ObjectContext ctx) {
+        super.enterObject(ctx);
+        System.out.println("Enter object " + ctx.getText());
+        currentObject = new ConfigObject(ctx.objname().getText());
+    }
+
+    @Override
+    public void exitObject(UserStoreConfigParser.ObjectContext ctx) {
+        super.exitObject(ctx);
+        configObjects.add(currentObject);
+    }
+
+    @Override
+    public void enterObjectproperties(UserStoreConfigParser.ObjectpropertiesContext ctx) {
+        super.enterObjectproperties(ctx);
+        ConfigObject.ConfigObjectProperty property = new ConfigObject.ConfigObjectProperty();
+        System.out.println("object name is" + ctx.name().getText());
+        property.name = ctx.name().getText();
+        currentObject.properties.add(property);
+    }
+
+    @Override
+    public void exitObjectproperties(UserStoreConfigParser.ObjectpropertiesContext ctx) {
+        super.exitObjectproperties(ctx);
+    }
+
+    //    @Override
 //    public void enterPath(UserStoreConfigParser.PathContext ctx) {
 //    }
 //
