@@ -27,25 +27,13 @@ public class UserStoreConfigBaseListener implements UserStoreConfigListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMuris(UserStoreConfigParser.MurisContext ctx) { }
+	@Override public void enterPathlines(UserStoreConfigParser.PathlinesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMuris(UserStoreConfigParser.MurisContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterUri(UserStoreConfigParser.UriContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitUri(UserStoreConfigParser.UriContext ctx) { }
+	@Override public void exitPathlines(UserStoreConfigParser.PathlinesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -63,6 +51,18 @@ public class UserStoreConfigBaseListener implements UserStoreConfigListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterPathline(UserStoreConfigParser.PathlineContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPathline(UserStoreConfigParser.PathlineContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterPath(UserStoreConfigParser.PathContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -70,6 +70,54 @@ public class UserStoreConfigBaseListener implements UserStoreConfigListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitPath(UserStoreConfigParser.PathContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterLABELIDPAIR(UserStoreConfigParser.LABELIDPAIRContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitLABELIDPAIR(UserStoreConfigParser.LABELIDPAIRContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSINGLELABEL(UserStoreConfigParser.SINGLELABELContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSINGLELABEL(UserStoreConfigParser.SINGLELABELContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterLabelid(UserStoreConfigParser.LabelidContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitLabelid(UserStoreConfigParser.LabelidContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterLabel(UserStoreConfigParser.LabelContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitLabel(UserStoreConfigParser.LabelContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

@@ -1,21 +1,39 @@
 grammar UserStoreConfig;
 
-userstoredesc: muris EOF;
+// /profile/<id>
+// /profile/<id>/persona
+// /profile/<id>/persona/<id>
+// /profile/id/persona/<id>/optouts
 
-muris
-   : uri more
+
+userstoredesc: pathlines EOF;
+
+pathlines
+   : pathline more
    ;
 
-uri 
-   : ('/' path?)? WS? NEWLINE
-   ;
-
-more: muris
-    | 
+more: pathlines
+    |
     ;
 
+pathline
+   : path WS? NEWLINE
+   ;
+
 path
-   : string ('/' string)* '/'?
+   : pathsegments
+   ;
+
+pathsegments
+   : '/' label '/' labelid pathsegments? #LABELIDPAIR
+   | '/' label                   #SINGLELABEL
+   ;
+
+labelid
+   :'<id>'
+   ;
+
+label: STRING
    ;
 
 string: STRING
@@ -33,3 +51,16 @@ STRING
 WS: [ \t]+ -> skip;
 
 NEWLINE: [\r\n] +;
+
+
+//uri
+//   : ('/' path?)? WS? NEWLINE
+//   ;
+//path
+//   : string ('/' string)* '/'?
+//   ;
+
+//path
+//   : '/' label ('/' string)*
+//   | label
+//   ;

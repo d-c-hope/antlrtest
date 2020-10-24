@@ -17,25 +17,15 @@ public interface UserStoreConfigListener extends ParseTreeListener {
 	 */
 	void exitUserstoredesc(UserStoreConfigParser.UserstoredescContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link UserStoreConfigParser#muris}.
+	 * Enter a parse tree produced by {@link UserStoreConfigParser#pathlines}.
 	 * @param ctx the parse tree
 	 */
-	void enterMuris(UserStoreConfigParser.MurisContext ctx);
+	void enterPathlines(UserStoreConfigParser.PathlinesContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link UserStoreConfigParser#muris}.
+	 * Exit a parse tree produced by {@link UserStoreConfigParser#pathlines}.
 	 * @param ctx the parse tree
 	 */
-	void exitMuris(UserStoreConfigParser.MurisContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link UserStoreConfigParser#uri}.
-	 * @param ctx the parse tree
-	 */
-	void enterUri(UserStoreConfigParser.UriContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link UserStoreConfigParser#uri}.
-	 * @param ctx the parse tree
-	 */
-	void exitUri(UserStoreConfigParser.UriContext ctx);
+	void exitPathlines(UserStoreConfigParser.PathlinesContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link UserStoreConfigParser#more}.
 	 * @param ctx the parse tree
@@ -47,6 +37,16 @@ public interface UserStoreConfigListener extends ParseTreeListener {
 	 */
 	void exitMore(UserStoreConfigParser.MoreContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link UserStoreConfigParser#pathline}.
+	 * @param ctx the parse tree
+	 */
+	void enterPathline(UserStoreConfigParser.PathlineContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link UserStoreConfigParser#pathline}.
+	 * @param ctx the parse tree
+	 */
+	void exitPathline(UserStoreConfigParser.PathlineContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link UserStoreConfigParser#path}.
 	 * @param ctx the parse tree
 	 */
@@ -56,6 +56,50 @@ public interface UserStoreConfigListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitPath(UserStoreConfigParser.PathContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code LABELIDPAIR}
+	 * labeled alternative in {@link UserStoreConfigParser#pathsegments}.
+	 * @param ctx the parse tree
+	 */
+	void enterLABELIDPAIR(UserStoreConfigParser.LABELIDPAIRContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code LABELIDPAIR}
+	 * labeled alternative in {@link UserStoreConfigParser#pathsegments}.
+	 * @param ctx the parse tree
+	 */
+	void exitLABELIDPAIR(UserStoreConfigParser.LABELIDPAIRContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code SINGLELABEL}
+	 * labeled alternative in {@link UserStoreConfigParser#pathsegments}.
+	 * @param ctx the parse tree
+	 */
+	void enterSINGLELABEL(UserStoreConfigParser.SINGLELABELContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code SINGLELABEL}
+	 * labeled alternative in {@link UserStoreConfigParser#pathsegments}.
+	 * @param ctx the parse tree
+	 */
+	void exitSINGLELABEL(UserStoreConfigParser.SINGLELABELContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link UserStoreConfigParser#labelid}.
+	 * @param ctx the parse tree
+	 */
+	void enterLabelid(UserStoreConfigParser.LabelidContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link UserStoreConfigParser#labelid}.
+	 * @param ctx the parse tree
+	 */
+	void exitLabelid(UserStoreConfigParser.LabelidContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link UserStoreConfigParser#label}.
+	 * @param ctx the parse tree
+	 */
+	void enterLabel(UserStoreConfigParser.LabelContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link UserStoreConfigParser#label}.
+	 * @param ctx the parse tree
+	 */
+	void exitLabel(UserStoreConfigParser.LabelContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link UserStoreConfigParser#string}.
 	 * @param ctx the parse tree
