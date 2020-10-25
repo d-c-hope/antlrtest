@@ -1,0 +1,7 @@
+pathtemplate(path, idPairs) ::= <<
+    case £path.idPairs : { idpair | £idpair.idName£ " :: " £idpair.name£ }£ => £docAndIDs(path, idPairs)£
+>>
+
+docAndIDs(path, idPairs) ::= <<
+Some(, £path.idPairs : { idpair | £idpair.idName£ "," }£) Seq(Get, Post, Delete)
+>>

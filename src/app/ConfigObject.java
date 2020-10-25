@@ -18,6 +18,9 @@ public class ConfigObject {
     public List<ConfigObjectProperty> properties;
     public String name;
 
+    public String getUpperName() {
+        return name.toUpperCase();
+    }
 
     @Override
     public String toString() {

@@ -1,3 +1,87 @@
+import "pathtemplate.stg"
+import "doctypes.stg"
+import "docclasses.stg"
+scalafile(paths, cfgobjects, priIDsMap) ::= <<
+package com.craftcodehouse.userstore.common
 
-decl(type, name, value) ::= "<type> <name><init(value)>;"
-init(v) ::= "<if(v)> = <v><endif>"
+import com.twitter.finagle.http.Method
+import com.twitter.finagle.http.Method.{Delete, Get, Post, Put}
+
+import scala.util.Try
+
+case class DocumentTypeAndKeys(documentType: DocumentType[_ <: AnyRef],
+                               primaryKey: String,
+                               additionalKeys: Seq[String] = Seq.empty)
+
+trait DocumentTypeMapper {
+  def getDocumentTypeAndKeysWithValidMethods(urlTail: Seq[String]): Option[(DocumentTypeAndKeys, Seq[Method])]
+}
+
+
+object DocumentTypeMapper extends DocumentTypeMapper {
+
+  val all: Seq[Method] = Seq(Get, Post, Put, Delete)
+  val enableTestConfig: Boolean = Try(sys.env.getOrElse("GENERIC_USERSTORE_ENABLE_TEST_CONFIG", "false").toBoolean).getOrElse(false)
+
+  def getDocumentTypeAndKeysWithValidMethods(urlTail: Seq[String]): Option[(DocumentTypeAndKeys, Seq[Method])] = {
+    (urlTail match {
+        //Top level document for sports and ondemand sub-documents
+      £paths : { path | £pathtemplate(path, path)£ £\n£}£
+      case _ => None
+    }).filter(_ => enableTestConfig)
+  }
+}
+
+trait Validator {
+  def validate(data: AnyRef): Option[String]
+}
+
+abstract class DocumentType[T <: AnyRef](val name: String,
+                                         val primaryIdentifierType: PrimaryIdentifierType,
+                                         val validators: Seq[Validator] = Seq.empty,
+                                         val rabbitConfig: Option[DocumentRabbitConfig] = None
+                                        )(implicit mf: Manifest[T]) {
+  val manifest: Manifest[T] = mf
+}
+
+case class DocumentRabbitConfig(eventName: String, keysToDocumentKey: Seq[String] => String, routingKeys: List[String], ttlMinutes: Option[Int] = None)
+
+trait DocumentTypes {
+  def get(name: String): Option[DocumentType[_ <: AnyRef]]
+}
+
+object UserStoreDocumentTypes extends DocumentTypes {
+
+  £cfgobjects : { object | £doctypes(object, priIDsMap)£ £\n£}£
+
+  private val All: List[DocumentType[_ <: AnyRef]] = List(MAIN, SPORTS_PREFERENCES, ON_DEMAND, AUTHENTICATION, PUBLIC_SPORTS_PREFERENCES)
+
+  def get(name: String): Option[DocumentType[_ <: AnyRef]] = All.find(_.name.equalsIgnoreCase(name))
+}
+
+£cfgobjects : { object | £docclassestpl(object)£ £\n£}£
+
+object FootballTeamValidator extends Validator {
+  override def validate(data: AnyRef): Option[String] = {
+
+    data match {
+      case SportsPreferences(_, Some(team)) if team.length > 30 =>
+        Some(s"'$team' name is too long")
+      case SportsPreferences(_, _) => None
+      case _ => Some("Not a valid SportsPreferences")
+    }
+  }
+}
+
+
+sealed trait PrimaryIdentifierType
+
+object PrimaryIdentifierTypes {
+  case object NsProfileId extends PrimaryIdentifierType
+}
+>>
+
+
+
+
+

@@ -1,5 +1,9 @@
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+
+import org.stringtemplate.v4.*;
 
 
 public class UserStoreConfigProcessor extends UserStoreConfigBaseListener {
@@ -10,6 +14,7 @@ public class UserStoreConfigProcessor extends UserStoreConfigBaseListener {
     ConfigObject currentObject;
     List<Path> paths;
     List<ConfigObject> configObjects;
+    Map<String, String> primaryIDsMap;
 
     public UserStoreConfigProcessor(UserStoreConfigParser parser) {
         this.parser = parser;
@@ -17,6 +22,7 @@ public class UserStoreConfigProcessor extends UserStoreConfigBaseListener {
         paths = new LinkedList<>();
         configObjects = new LinkedList<>();
         currentPath = null;
+        primaryIDsMap = new HashMap<>();
     }
 
     public List<String> getUris() {
@@ -33,6 +39,15 @@ public class UserStoreConfigProcessor extends UserStoreConfigBaseListener {
         System.out.println(uris);
         System.out.println(paths);
         System.out.println(configObjects);
+
+        STGroup group = new STGroupFile("src/templates/ustemplate.stg", '£', '£');
+        ST st = group.getInstanceOf("scalafile");
+        st.add("paths", paths);
+        System.out.println("Config objects length "+configObjects.size());
+        st.add("cfgobjects", configObjects);
+        st.add("priIDsMap", primaryIDsMap);
+        String result = st.render(); // yields "int x = 0;"
+        System.out.println(result);
     }
 
     @Override
@@ -46,6 +61,7 @@ public class UserStoreConfigProcessor extends UserStoreConfigBaseListener {
     public void exitPath(UserStoreConfigParser.PathContext uriContext) {
         System.out.println("In exit path");
         paths.add(currentPath);
+        checkForPrimaryID(currentPath);
     }
 
     @Override
@@ -92,6 +108,8 @@ public class UserStoreConfigProcessor extends UserStoreConfigBaseListener {
         ConfigObject.ConfigObjectProperty property = new ConfigObject.ConfigObjectProperty();
         System.out.println("object name is" + ctx.name().getText());
         property.name = ctx.name().getText();
+        System.out.println("object type is" + ctx.type().getText());
+        property.type = ctx.type().getText();
         currentObject.properties.add(property);
     }
 
@@ -118,4 +136,12 @@ public class UserStoreConfigProcessor extends UserStoreConfigBaseListener {
 //    public void exitString(UserStoreConfigParser.StringContext stringContext) {
 //
 //    }
+
+    void checkForPrimaryID(Path currentPath) {
+        if (currentPath.doctype != null) {
+            String primaryID = currentPath.idPairs.get(0).idName;
+            primaryIDsMap.put(currentPath.doctype.name, primaryID);
+        }
+    }
+
 }

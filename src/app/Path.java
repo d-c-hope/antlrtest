@@ -4,11 +4,12 @@ import java.util.List;
 class Path {
     public Path() {
         this.idPairs = new LinkedList<>();
+        this.name = "aname";
     }
 
     static class LabelIDPair {
-        String name;
-        String idName;
+        public String name;
+        public String idName;
 
         public LabelIDPair(String name, String idName) {
             this.name = name;
@@ -39,8 +40,9 @@ class Path {
         }
     }
 
-    List<LabelIDPair> idPairs;
-    DocType doctype;
+    public List<LabelIDPair> idPairs;
+    public DocType doctype;
+    public String name;
 
     @Override
     public String toString() {

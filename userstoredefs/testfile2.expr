@@ -1,12 +1,13 @@
 /profile/<id>
-/profile/<id>/persona/<id>/optouts
+/profile/<id>/optouts
+/profile/<id>/persona/<id>/settings
 
 def optouts
-    marketing
-    pushnotification
+    marketing boolean
+    pushnotification boolean
 enddef
 
-def setting
+def settings
     audio audiosetting
     brightness int brightnessvalidator
 enddef

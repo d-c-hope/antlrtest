@@ -1,0 +1,3 @@
+docclassestpl(cfgobject) ::= <<
+case £cfgobject.name£(£cfgobject.properties : { property | £property.name£ : £property.type£ }; separator=", "£)
+>>
