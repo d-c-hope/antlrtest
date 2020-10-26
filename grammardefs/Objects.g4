@@ -32,10 +32,6 @@ type: STRING
 validator: STRING
    ;
 
-//metasection
-//   : '$$$'
-//   ;
-
 metasection
    : META NEWLINE metaproperties+ ENDMETA
    ;

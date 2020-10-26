@@ -2,10 +2,18 @@ import java.util.LinkedList;
 import java.util.List;
 
 class Path {
+
+    public List<LabelIDPair> idPairs;
+    public DocType doctype;
+    public String name;
+    public List<String> methods;
+
     public Path() {
         this.idPairs = new LinkedList<>();
-        this.name = "aname";
+        this.methods = new LinkedList<>();
+        this.name = "";
     }
+
 
     static class LabelIDPair {
         public String name;
@@ -26,7 +34,7 @@ class Path {
     }
 
     static class DocType {
-        String name;
+        public String name;
 
         public DocType(String name) {
             this.name = name;
@@ -40,15 +48,13 @@ class Path {
         }
     }
 
-    public List<LabelIDPair> idPairs;
-    public DocType doctype;
-    public String name;
-
     @Override
     public String toString() {
         return "Path{" +
                 "idPairs=" + idPairs +
                 ", doctype=" + doctype +
+                ", name='" + name + '\'' +
+                ", methods=" + methods +
                 '}';
     }
 }

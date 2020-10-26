@@ -3,6 +3,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import org.antlr.v4.runtime.tree.TerminalNode;
 import org.stringtemplate.v4.*;
 
 
@@ -81,12 +82,42 @@ public class UserStoreConfigProcessor extends UserStoreConfigBaseListener {
     public void enterSINGLELABEL(UserStoreConfigParser.SINGLELABELContext ctx) {
         super.enterSINGLELABEL(ctx);
         String label = ctx.label().getText();
-        currentPath.doctype = new Path.DocType(label);
+//        currentPath.doctype = new Path.DocType(label);
+        currentPath.name = label;
     }
 
     @Override
     public void exitSINGLELABEL(UserStoreConfigParser.SINGLELABELContext ctx) {
         super.exitSINGLELABEL(ctx);
+    }
+
+    @Override
+    public void enterMethods(UserStoreConfigParser.MethodsContext ctx) {
+        super.enterMethods(ctx);
+        List<TerminalNode> methods = ctx.HMETHOD();
+        for (TerminalNode node: methods) {
+            String method = node.getText();
+            currentPath.methods.add(method);
+        }
+    }
+
+    @Override
+    public void exitMethods(UserStoreConfigParser.MethodsContext ctx) {
+        super.exitMethods(ctx);
+    }
+
+
+
+    @Override
+    public void enterDocref(UserStoreConfigParser.DocrefContext ctx) {
+        super.enterDocref(ctx);
+        String ref = ctx.getText();
+        currentPath.doctype = new Path.DocType(ref);
+    }
+
+    @Override
+    public void exitDocref(UserStoreConfigParser.DocrefContext ctx) {
+        super.exitDocref(ctx);
     }
 
     @Override

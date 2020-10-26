@@ -1,7 +1,7 @@
 pathtemplate(path, idPairs) ::= <<
-    case £path.idPairs : { idpair | £idpair.idName£ " :: " £idpair.name£ }£ => £docAndIDs(path, idPairs)£
+    case £path.idPairs : { idpair | £idpair.idName£ :: £idpair.name£ }; separator=" :: " £  £if(path.name)£:: £path.name££endif£ => £docAndIDs(path, idPairs)£
 >>
 
 docAndIDs(path, idPairs) ::= <<
-Some(, £path.idPairs : { idpair | £idpair.idName£ "," }£) Seq(Get, Post, Delete)
+Some(DocumentTypeAndKeys(UserStoreDocumentTypes.£path.doctype.name£ , £path.idPairs : { idpair | £idpair.idName£ }; separator=", " £) Seq(£path.methods : { method | £method£ }; separator=", " £))
 >>

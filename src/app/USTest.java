@@ -33,11 +33,3 @@ public class USTest {
 //        System.out.println(tree.toStringTree(parser)); // print LISP-style tree
     }
 }
-
-
-//STGroup group = new STGroupFile("/tmp/test.stg");
-// ST st = group.getInstanceOf("decl");
-// st.add("type", "int");
-// st.add("name", "x");
-// st.add("value", 0);
-// String result = st.render(); // yields "int x = 0;"
