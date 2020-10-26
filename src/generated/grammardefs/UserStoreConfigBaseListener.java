@@ -99,6 +99,30 @@ public class UserStoreConfigBaseListener implements UserStoreConfigListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterMethods(UserStoreConfigParser.MethodsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMethods(UserStoreConfigParser.MethodsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDocref(UserStoreConfigParser.DocrefContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDocref(UserStoreConfigParser.DocrefContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterLabel(UserStoreConfigParser.LabelContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -178,6 +202,42 @@ public class UserStoreConfigBaseListener implements UserStoreConfigListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitValidator(UserStoreConfigParser.ValidatorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterMetasection(UserStoreConfigParser.MetasectionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMetasection(UserStoreConfigParser.MetasectionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterMetaproperties(UserStoreConfigParser.MetapropertiesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMetaproperties(UserStoreConfigParser.MetapropertiesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterValue(UserStoreConfigParser.ValueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitValue(UserStoreConfigParser.ValueContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

@@ -21,6 +21,8 @@ Then source this:
 ```
 . /usr/local/antlr/setup
 ```
+
+
 ## Intellij
 Add the antlr jar to the module jars.
 Set both app and generated/grammardefs as source roots  

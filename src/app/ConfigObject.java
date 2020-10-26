@@ -7,6 +7,7 @@ public class ConfigObject {
     public ConfigObject(String name) {
         this.name = name;
         this.properties = new LinkedList<>();
+        this.metaProperties = new ConfigObjectMetaProperties();
     }
 
     static class ConfigObjectProperty {
@@ -15,8 +16,14 @@ public class ConfigObject {
         public String validatorName;
     }
 
+    static class ConfigObjectMetaProperties {
+        public boolean hasQueue = false;
+        public String queueName;
+    }
+
     public List<ConfigObjectProperty> properties;
     public String name;
+    public ConfigObjectMetaProperties metaProperties;
 
     public String getUpperName() {
         return name.toUpperCase();

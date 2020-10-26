@@ -81,6 +81,26 @@ public interface UserStoreConfigListener extends ParseTreeListener {
 	 */
 	void exitLabelid(UserStoreConfigParser.LabelidContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link UserStoreConfigParser#methods}.
+	 * @param ctx the parse tree
+	 */
+	void enterMethods(UserStoreConfigParser.MethodsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link UserStoreConfigParser#methods}.
+	 * @param ctx the parse tree
+	 */
+	void exitMethods(UserStoreConfigParser.MethodsContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link UserStoreConfigParser#docref}.
+	 * @param ctx the parse tree
+	 */
+	void enterDocref(UserStoreConfigParser.DocrefContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link UserStoreConfigParser#docref}.
+	 * @param ctx the parse tree
+	 */
+	void exitDocref(UserStoreConfigParser.DocrefContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link UserStoreConfigParser#label}.
 	 * @param ctx the parse tree
 	 */
@@ -150,4 +170,34 @@ public interface UserStoreConfigListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitValidator(UserStoreConfigParser.ValidatorContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link UserStoreConfigParser#metasection}.
+	 * @param ctx the parse tree
+	 */
+	void enterMetasection(UserStoreConfigParser.MetasectionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link UserStoreConfigParser#metasection}.
+	 * @param ctx the parse tree
+	 */
+	void exitMetasection(UserStoreConfigParser.MetasectionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link UserStoreConfigParser#metaproperties}.
+	 * @param ctx the parse tree
+	 */
+	void enterMetaproperties(UserStoreConfigParser.MetapropertiesContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link UserStoreConfigParser#metaproperties}.
+	 * @param ctx the parse tree
+	 */
+	void exitMetaproperties(UserStoreConfigParser.MetapropertiesContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link UserStoreConfigParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void enterValue(UserStoreConfigParser.ValueContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link UserStoreConfigParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void exitValue(UserStoreConfigParser.ValueContext ctx);
 }

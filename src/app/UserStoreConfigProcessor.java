@@ -105,37 +105,64 @@ public class UserStoreConfigProcessor extends UserStoreConfigBaseListener {
     @Override
     public void enterObjectproperties(UserStoreConfigParser.ObjectpropertiesContext ctx) {
         super.enterObjectproperties(ctx);
-        ConfigObject.ConfigObjectProperty property = new ConfigObject.ConfigObjectProperty();
-        System.out.println("object name is" + ctx.name().getText());
-        property.name = ctx.name().getText();
-        System.out.println("object type is" + ctx.type().getText());
-        property.type = ctx.type().getText();
-        currentObject.properties.add(property);
+//        System.out.println("Enter object properties");
+        if (ctx.name() != null) {
+            ConfigObject.ConfigObjectProperty property = new ConfigObject.ConfigObjectProperty();
+//        System.out.println("object name is" + ctx);
+            System.out.println("property name is" + ctx.name().getText());
+            property.name = ctx.name().getText();
+//        System.out.println("object type is" + ctx.type().getText());
+            property.type = ctx.type().getText();
+            currentObject.properties.add(property);
+        }
+        else {
+
+        }
     }
 
     @Override
     public void exitObjectproperties(UserStoreConfigParser.ObjectpropertiesContext ctx) {
         super.exitObjectproperties(ctx);
+//        System.out.println("Exit object properties");
     }
 
-    //    @Override
-//    public void enterPath(UserStoreConfigParser.PathContext ctx) {
-//    }
-//
-//    @Override
-//    public void exitPath(UserStoreConfigParser.PathContext ctx) {
-//
-//    }
-//
-//    @Override
-//    public void enterString(UserStoreConfigParser.StringContext stringContext) {
-//
-//    }
-//
-//    @Override
-//    public void exitString(UserStoreConfigParser.StringContext stringContext) {
-//
-//    }
+    @Override
+    public void enterMetasection(UserStoreConfigParser.MetasectionContext ctx) {
+        super.enterMetasection(ctx);
+        System.out.println("Enter meta");
+        currentObject.metaProperties = new ConfigObject.ConfigObjectMetaProperties();
+    }
+
+    @Override
+    public void exitMetasection(UserStoreConfigParser.MetasectionContext ctx) {
+        super.exitMetasection(ctx);
+        System.out.println("Exit meta");
+    }
+
+    @Override
+    public void enterMetaproperties(UserStoreConfigParser.MetapropertiesContext ctx) {
+        super.enterMetaproperties(ctx);
+        String name = ctx.name().getText();
+        String value = ctx.value().getText();
+
+        if (name.equals("queue")) {
+            System.out.println("got queue property");
+            if (value.equals("true")) {
+                currentObject.metaProperties.hasQueue = true;
+            } else {
+                currentObject.metaProperties.hasQueue = false;
+            }
+        }
+        else if (name.equals("queuekey")){
+            currentObject.metaProperties.queueName = value;
+        }
+    }
+
+    @Override
+    public void exitMetaproperties(UserStoreConfigParser.MetapropertiesContext ctx) {
+        super.exitMetaproperties(ctx);
+    }
+
 
     void checkForPrimaryID(Path currentPath) {
         if (currentPath.doctype != null) {

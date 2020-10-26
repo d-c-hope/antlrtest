@@ -1,22 +1,14 @@
 grammar Paths;
 import Lexer;
 
-// /profile/<id>
-// /profile/<id>/persona
-// /profile/<id>/persona/<id>
-// /profile/id/persona/<id>/optouts
+// /profile/<id> (get) optouts
+// /profile/<id>/persona  (get, post) optouts
+// /profile/<id>/persona/<id>  (get) optouts
+// /profile/id/persona/<id>/optouts  (get) optouts
 
-//pathlines
-//   : pathline more
-//   ;
-//
-//more
-//   : pathlines
-//    |
-//    ;
 
 pathline
-   : path WS? NEWLINE
+   : path methods docref WS? NEWLINE
    ;
 
 path
@@ -32,6 +24,15 @@ labelid
    :'<id>'
    ;
 
-label: STRING
+methods
+   : '(' (HMETHOD ','?)+ ')'
+   ;
+
+docref
+   : STRING
+   ;
+
+label
+   : STRING
    ;
 

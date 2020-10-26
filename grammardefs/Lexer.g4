@@ -8,6 +8,18 @@ ENDDEF
    : 'enddef'
    ;
 
+META
+   : 'meta'
+   ;
+
+ENDMETA
+   : 'endmeta'
+   ;
+
+HMETHOD
+   : 'get' | 'put' | 'post' | 'del'
+   ;
+
 DIGITS
    : [0-9] +
    ;

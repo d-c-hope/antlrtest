@@ -1,0 +1,22 @@
+/profile/<id> (post) optouts
+/profile/<id>/optouts (post, get, del) optouts
+/profile/<id>/persona/<id>/settings (post, get, del) settings
+
+def optouts
+    marketing boolean
+    pushnotification boolean
+    meta
+       queue: true
+       queuekey: profileoptouts
+    endmeta
+enddef
+
+def settings
+    audio audiosetting
+    brightness int brightnessvalidator
+enddef
+
+def audiosetting
+    volume int
+    outputsource string opsrcvalidator
+enddef

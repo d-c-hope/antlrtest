@@ -4,6 +4,10 @@ import Lexer;
 //def optouts
 //    marketing
 //    pushnotification
+//    meta
+//       queue: true
+//       queuekey: profile.id.optouts
+//    endmeta
 //end def
 
 object
@@ -11,9 +15,9 @@ object
    ;
 
 objectproperties
-   : name type validator NEWLINE
+   : metasection NEWLINE
+   | name type validator NEWLINE
    | name type NEWLINE
-   | name NEWLINE
    ;
 
 objname: STRING
@@ -26,4 +30,19 @@ type: STRING
    ;
 
 validator: STRING
+   ;
+
+//metasection
+//   : '$$$'
+//   ;
+
+metasection
+   : META NEWLINE metaproperties+ ENDMETA
+   ;
+
+metaproperties
+   : name ':' value NEWLINE
+   ;
+
+value: STRING
    ;
