@@ -19,6 +19,14 @@ public class ConfigObject {
     static class ConfigObjectMetaProperties {
         public boolean hasQueue = false;
         public String queueName;
+
+        @Override
+        public String toString() {
+            return "ConfigObjectMetaProperties{" +
+                    "hasQueue=" + hasQueue +
+                    ", queueName='" + queueName + '\'' +
+                    '}';
+        }
     }
 
     public List<ConfigObjectProperty> properties;
@@ -34,6 +42,7 @@ public class ConfigObject {
         return "ConfigObject{" +
                 "properties=" + properties +
                 ", name='" + name + '\'' +
+                ", metaProperties=" + metaProperties +
                 '}';
     }
 }

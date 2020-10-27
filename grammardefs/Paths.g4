@@ -1,10 +1,10 @@
 grammar Paths;
 import Lexer;
 
-// /profile/<id> (get) optouts
-// /profile/<id>/persona  (get, post) optouts
-// /profile/<id>/persona/<id>  (get) optouts
-// /profile/id/persona/<id>/optouts  (get) optouts
+// /profile/<nsprofileid> (get) optouts
+// /profile/<nsprofileid>/persona  (get, post) optouts
+// /profile/<nsprofileid>/persona/<personaid>  (get) optouts
+// /profile/<nsprofileid>/persona/<personaid>/optouts  (get) optouts
 
 
 pathline
@@ -21,7 +21,11 @@ pathsegments
    ;
 
 labelid
-   :'<id>'
+   :'<'labelidname'>'
+   ;
+
+labelidname
+   : STRING
    ;
 
 methods

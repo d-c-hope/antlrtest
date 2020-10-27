@@ -1,7 +1,16 @@
 doctypes(cfgobject, priIDsMap) ::= <<
     case object £cfgobject.upperName£ extends DocumentType[£cfgobject.name£]("£cfgobject.upperName£",
         £priIDsMap.(cfgobject.name)£,
-        Seq(FootballTeamValidator),
-        rabbitConfig = Some(DocumentRabbitConfig("£cfgobject.upperName£", keys => s"profile.${keys.head}.sports_prefs.${keys.tail.head}", List("rk-sports-prefs"), Some(2)))
+        Seq(FootballTeamValidator)£if(cfgobject.metaProperties.hasQueue)£ £rabbitconfig(cfgobject)£ £endif£,
+
       )
+>>
+
+doctypelabels(cfgobjects) ::= <<
+    £cfgobjects : { obj | £obj.upperName£ }; separator=", "£
+>>
+
+rabbitconfig(cfgobject) ::= <<
+    ,
+    rabbitConfig = Some(DocumentRabbitConfig("£cfgobject.upperName£", keys => s"profile.${keys.head}.sports_prefs.${keys.tail.head}", List("rk-£cfgobject.metaProperties.queueName£"), Some(2)))
 >>

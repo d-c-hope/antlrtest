@@ -54,7 +54,7 @@ object UserStoreDocumentTypes extends DocumentTypes {
 
   £cfgobjects : { object | £doctypes(object, priIDsMap)£ £\n£}£
 
-  private val All: List[DocumentType[_ <: AnyRef]] = List(MAIN, SPORTS_PREFERENCES, ON_DEMAND, AUTHENTICATION, PUBLIC_SPORTS_PREFERENCES)
+  private val All: List[DocumentType[_ <: AnyRef]] = List(£doctypelabels(cfgobjects)£)
 
   def get(name: String): Option[DocumentType[_ <: AnyRef]] = All.find(_.name.equalsIgnoreCase(name))
 }

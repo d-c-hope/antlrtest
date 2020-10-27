@@ -81,6 +81,16 @@ public interface UserStoreConfigListener extends ParseTreeListener {
 	 */
 	void exitLabelid(UserStoreConfigParser.LabelidContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link UserStoreConfigParser#labelidname}.
+	 * @param ctx the parse tree
+	 */
+	void enterLabelidname(UserStoreConfigParser.LabelidnameContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link UserStoreConfigParser#labelidname}.
+	 * @param ctx the parse tree
+	 */
+	void exitLabelidname(UserStoreConfigParser.LabelidnameContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link UserStoreConfigParser#methods}.
 	 * @param ctx the parse tree
 	 */

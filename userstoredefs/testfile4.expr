@@ -1,0 +1,22 @@
+/profile/<nsprofileid> (post) optouts
+/profile/<nsprofileid>/optouts (post, get, del) optouts
+/profile/<nsprofileid>/persona/<personaid>/settings (post, get, del) settings
+
+def optouts
+    marketing boolean
+    pushnotification boolean
+    meta
+       queue: true
+       queuekey: profileoptouts
+    endmeta
+enddef
+
+def settings
+    audio audiosetting
+    brightness int BrightnessValidator
+enddef
+
+def audiosetting
+    volume int
+    outputsource string OpSrcValidator
+enddef

@@ -40,6 +40,8 @@ public class UserStoreConfigProcessor extends UserStoreConfigBaseListener {
         System.out.println(uris);
         System.out.println(paths);
         System.out.println(configObjects);
+        System.out.println("primaryIDsMap");
+        System.out.println(primaryIDsMap);
 
         STGroup group = new STGroupFile("src/templates/ustemplate.stg", '£', '£');
         ST st = group.getInstanceOf("scalafile");
@@ -61,15 +63,14 @@ public class UserStoreConfigProcessor extends UserStoreConfigBaseListener {
     @Override
     public void exitPath(UserStoreConfigParser.PathContext uriContext) {
         System.out.println("In exit path");
-        paths.add(currentPath);
-        checkForPrimaryID(currentPath);
+        paths.add(currentPath); // TODO this should move into the pathline exit now after refactor
     }
 
     @Override
     public void enterLABELIDPAIR(UserStoreConfigParser.LABELIDPAIRContext ctx) {
         super.enterLABELIDPAIR(ctx);
         String label = ctx.label().getText();
-        String id = ctx.labelid().getText();
+        String id = ctx.labelid().labelidname().getText();
         currentPath.idPairs.add(new Path.LabelIDPair(label, id));
     }
 
@@ -118,6 +119,7 @@ public class UserStoreConfigProcessor extends UserStoreConfigBaseListener {
     @Override
     public void exitDocref(UserStoreConfigParser.DocrefContext ctx) {
         super.exitDocref(ctx);
+        checkForPrimaryID(currentPath);
     }
 
     @Override
@@ -197,6 +199,7 @@ public class UserStoreConfigProcessor extends UserStoreConfigBaseListener {
 
     void checkForPrimaryID(Path currentPath) {
         if (currentPath.doctype != null) {
+            System.out.println("doctype not equal to null");
             String primaryID = currentPath.idPairs.get(0).idName;
             primaryIDsMap.put(currentPath.doctype.name, primaryID);
         }

@@ -99,6 +99,18 @@ public class UserStoreConfigBaseListener implements UserStoreConfigListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterLabelidname(UserStoreConfigParser.LabelidnameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitLabelidname(UserStoreConfigParser.LabelidnameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterMethods(UserStoreConfigParser.MethodsContext ctx) { }
 	/**
 	 * {@inheritDoc}
